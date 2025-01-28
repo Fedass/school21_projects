@@ -1,0 +1,72 @@
+#!/bin/bash
+
+function print-params {
+    if [[ $# -gt 4 ]]; then
+        echo "Too many params in print-params function"
+        exit 1
+    fi
+
+    WHITE='\033[0;37m'  
+    RED='\033[0;31m'    
+    GREEN='\033[0;32m'  
+    BLUE='\033[0;34m'   
+    PURPLE='\033[0;35m'
+    BLACK='\033[0;30m' 
+
+    BG_WHITE='\033[47m' 
+    BG_RED='\033[41m'   
+    BG_GREEN='\033[42m' 
+    BG_BLUE='\033[44m'  
+    BG_PURPLE='\033[45m'
+    BG_BLACK='\033[40m' 
+    
+    if [[ $# = 0 ]]; then
+        NC=""
+    else
+        NC='\033[0m'  
+    fi
+    
+    declare -A COLORS
+    COLORS=( [1]="$WHITE" [2]="$RED" [3]="$GREEN" [4]="$BLUE" [5]="$PURPLE" [6]="$BLACK" [7]="" )
+    declare -A BG_COLORS
+    BG_COLORS=( [1]="$BG_WHITE" [2]="$BG_RED" [3]="$BG_GREEN" [4]="$BG_BLUE" [5]="$BG_PURPLE" [6]="$BG_BLACK" [7]="" )
+
+    PARAM1=${1:-7}
+    PARAM2=${2:-7}
+    PARAM3=${3:-7}
+    PARAM4=${4:-7}
+
+    for ((i=1; i<=$#; i++)); do
+        if [[ ${!i} -lt 1 || ${!i} -gt 6 ]]; then
+            echo "Error: Param $i should be between 1 and 6"
+            exit 1
+        fi
+    done
+
+    COLOR_BG_NAME=${BG_COLORS[$PARAM1]}
+    COLOR_FG_NAME=${COLORS[$PARAM2]}
+    COLOR_BG_VALUE=${BG_COLORS[$PARAM3]}
+    COLOR_FG_VALUE=${COLORS[$PARAM4]}
+
+    COLOR_BG_NAME=${COLOR_BG_NAME:-""}
+    COLOR_FG_NAME=${COLOR_FG_NAME:-""}
+    COLOR_BG_VALUE=${COLOR_BG_VALUE:-""}
+    COLOR_FG_VALUE=${COLOR_FG_VALUE:-""}
+
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}HOSTNAME${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(hostname)${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}TIMEZONE${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(timedatectl | grep 'Time zone' | awk '{print $3, $4, $5}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}USER${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(whoami)${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}OS${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(uname -sr | awk -F "." '{print $1"."$2}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}DATE${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(date '+%d %b %Y %H:%M:%S')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}UPTIME${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(uptime -p)${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}UPTIME_SEC${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(awk '{print $1}' /proc/uptime)${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}IP${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(hostname -I | awk '{print $1}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}MASK${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(ip a | grep $(hostname -I | awk '{print $1}') | awk '{print $4}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}GATEWAY${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(ip r | grep default | awk '{print $3}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}RAM_TOTAL${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(free -m | awk '/Mem:/ {printf "%.3f GB", $2/1024}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}RAM_USED${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(free -m | awk '/Mem:/ {printf "%.3f GB", $3/1024}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}RAM_FREE${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(free -m | awk '/Mem:/ {printf "%.3f GB", $4/1024}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}SPACE_ROOT${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(df / | awk '/\// {printf "%.2f MB", $2/1024}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}SPACE_ROOT_USED${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(df / | awk '/\// {printf "%.2f MB", $3/1024}')${NC}"
+    echo -e "${COLOR_FG_NAME}${COLOR_BG_NAME}SPACE_ROOT_FREE${NC} = ${COLOR_FG_VALUE}${COLOR_BG_VALUE}$(df / | awk '/\// {printf "%.2f MB", $4/1024}')${NC}"
+}

@@ -1,0 +1,19 @@
+#!/bin/bash
+function save-params {
+    if [ $# -ne 1 ]; then
+        echo "Command must be run with one param"
+        exit 1
+    fi
+    
+    read -p "Do you want to save params to file? (y/n): " answer
+    
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+    
+        filename=$(date +"%d_%m_%y_%H_%M_%S").status
+        
+        printf "%s\n" "$1" > $filename
+        echo "Data saved to file: $filename"
+    else
+        echo "Data was not saved."
+    fi
+}

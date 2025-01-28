@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function config-scan {
+    column1_background=$(grep "column1_background" print-colors.conf | awk -F '=' '{print $2}')
+    column1_font_color=$(grep "column1_font_color" print-colors.conf | awk -F '=' '{print $2}')
+    column2_background=$(grep "column2_background" print-colors.conf | awk -F '=' '{print $2}')
+    column2_font_color=$(grep "column2_font_color" print-colors.conf | awk -F '=' '{print $2}')
+
+    printf "%d %d %d %d"  $column1_background $column1_font_color $column2_background $column2_font_color
+
+}
