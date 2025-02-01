@@ -1,0 +1,16 @@
+Log file for script ./main.sh run on 010225
+Parameters: /home/shermanb/test 3 fg 4 fg.fg 3kb
+Created folders and files:
+/home/shermanb/test/ffgg_010225/ffggg_010225.ffggggg | 2025-02-01 23:06:07.170907979 +0500 | 3072 bytes
+/home/shermanb/test/ffgg_010225/fffffgg_010225.ffffggggg | 2025-02-01 23:06:07.178908759 +0500 | 3072 bytes
+/home/shermanb/test/ffgg_010225/ffffgggggg_010225.fffffggg | 2025-02-01 23:06:07.187909636 +0500 | 3072 bytes
+/home/shermanb/test/ffgg_010225/ffffffggg_010225.ffffffgg | 2025-02-01 23:06:07.194910319 +0500 | 3072 bytes
+/home/shermanb/test/fffffgggggg_010225/fffggggg_010225.ffgg | 2025-02-01 23:06:07.208911682 +0500 | 3072 bytes
+/home/shermanb/test/fffffgggggg_010225/ffggggg_010225.fffgggggg | 2025-02-01 23:06:07.217912559 +0500 | 3072 bytes
+/home/shermanb/test/fffffgggggg_010225/ffffffggggg_010225.fffffgggggg | 2025-02-01 23:06:07.226913436 +0500 | 3072 bytes
+/home/shermanb/test/fffffgggggg_010225/fffggggg_010225.fffgg | 2025-02-01 23:06:07.235914312 +0500 | 3072 bytes
+/home/shermanb/test/fffgggggg_010225/ffgg_010225.ffffffggggg | 2025-02-01 23:06:07.245915287 +0500 | 3072 bytes
+/home/shermanb/test/fffgggggg_010225/fffffggggg_010225.fffggggg | 2025-02-01 23:06:07.253916066 +0500 | 3072 bytes
+/home/shermanb/test/fffgggggg_010225/fffgggggg_010225.ffggggg | 2025-02-01 23:06:07.261916846 +0500 | 3072 bytes
+/home/shermanb/test/fffgggggg_010225/fffggg_010225.ffggg | 2025-02-01 23:06:07.267917430 +0500 | 3072 bytes
+End of log file.
