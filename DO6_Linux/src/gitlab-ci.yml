@@ -1,0 +1,63 @@
+stages:
+  - build
+  - style
+  - test
+  - deploy
+
+build-cat-grep:
+  stage: build
+  tags:
+    - build
+  script:
+    - cd src/cat
+    - make s21_cat
+    - cd ../grep
+    - make s21_grep
+  artifacts:
+    paths:
+      - src/cat/s21_cat
+      - src/grep/s21_grep
+    expire_in: 30 days
+
+style-test-cat-grep:
+  stage: style
+  tags:
+    - style
+  script:
+    - cp -r materials/linters/.clang-format src/cat
+    - cp -r materials/linters/.clang-format src/grep
+    - cd src/cat
+    - clang-format --Werror -n *.c
+    - cd ../grep
+    - clang-format --Werror -n *.c
+
+test-cat-grep:
+  stage: test
+  tags:
+    - test
+  script:
+    - cd src/cat
+    - chmod +x test_cat.sh
+    - ./test_cat.sh
+    - cd ../grep
+    - chmod +x test_grep.sh
+    - ./test_grep.sh
+    
+  allow_failure: false
+  needs:
+    - job: build-cat-grep
+    - job: style-test-cat-grep
+
+deploy-cat-grep:
+  stage: deploy
+  tags:
+    - deploy
+  script:
+    - cd src
+    - chmod +x run_deploy.sh
+    - ./run_deploy.sh
+  only:
+    - develop
+  when: manual
+  needs:
+    - job: test-cat-grep
