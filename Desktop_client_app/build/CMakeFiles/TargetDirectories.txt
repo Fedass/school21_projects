@@ -1,0 +1,11 @@
+/home/shermanb/school21_projects/Desktop_client_app/build/CMakeFiles/edit_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/CMakeFiles/rebuild_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/client/CMakeFiles/client_app.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/client/CMakeFiles/edit_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/client/CMakeFiles/rebuild_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/processor_server/CMakeFiles/processor_server.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/processor_server/CMakeFiles/edit_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/processor_server/CMakeFiles/rebuild_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/display_server/CMakeFiles/display_server.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/display_server/CMakeFiles/edit_cache.dir
+/home/shermanb/school21_projects/Desktop_client_app/build/display_server/CMakeFiles/rebuild_cache.dir
